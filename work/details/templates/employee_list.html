@@ -1,0 +1,64 @@
+<!-- templates/employeeapp/employee_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee List</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            background: #fff;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        a {
+            padding: 6px 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            border-radius: 4px;
+        }
+        .edit-btn {
+            background-color: #2196F3;
+        }
+        .delete-btn {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee List</h2>
+    <a href="{% url 'employee_create' %}">+ Add New Employee</a>
+    <br><br>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.role }}</td>
+            <td>{{ emp.dept }}</td>
+            <td>
+                <a href="{% url 'employee_update' emp.id %}" class="edit-btn">Edit</a>
+                <a href="{% url 'employee_delete' emp.id %}" class="delete-btn">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!-- templates/employeeapp/employee_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ form.instance.id|yesno:"Edit Employee,Add Employee" }}</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #e0f7fa;
+            padding: 30px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #aaa;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+        }
+        button {
+            background-color: #4CAF50;
+            padding: 10px 15px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>{{ form.instance.id|yesno:"Edit Employee,Add Employee" }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'employee_list' %}">← Back to List</a>
+</body>
+</html>
